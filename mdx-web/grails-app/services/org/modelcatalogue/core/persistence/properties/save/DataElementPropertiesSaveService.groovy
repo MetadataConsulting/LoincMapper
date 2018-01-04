@@ -15,10 +15,6 @@ class DataElementPropertiesSaveService {
 
     DataElementGormService dataElementGormService
 
-    boolean validateSaveOperations() {
-        false
-    }
-
     DataElementPersistenceOperation find(DataElementProperties properties, DataModel dataModel, DataType dataType) {
         PersistenceOperation operation = PersistenceOperation.UPDATE
         DataElement dataElement = findByProperites(properties, dataModel, dataType)
@@ -31,13 +27,13 @@ class DataElementPropertiesSaveService {
         new DataElementPersistenceOperation(operation: operation, dataElement: dataElement)
     }
 
-    DataElementPersistenceOperation save(ModelCatalogueProperties properties, DataModel dataModel, DataType dataType) {
+    DataElementPersistenceOperation save(ModelCatalogueProperties properties, DataModel dataModel, DataType dataType, Closure cls) {
         DataElementPersistenceOperation dataElementOperation = null
         if ( properties.dataElement != null ) {
             dataElementOperation = find(properties.dataElement, dataModel, dataType)
         }
-        if ( dataElementOperation != null ) {
-            process(dataElementOperation)
+        if ( dataElementOperation != null && cls != null ) {
+            cls(dataElementOperation)
         }
         dataElementOperation
     }
@@ -63,10 +59,4 @@ class DataElementPropertiesSaveService {
         }
         null
     }
-
-    void process(DataElementPersistenceOperation dataElementPersistenceOperation) {
-        DataElement dataElement = dataElementPersistenceOperation.dataElement
-        dataElement.save(validate: validateSaveOperations())
-    }
-
 }

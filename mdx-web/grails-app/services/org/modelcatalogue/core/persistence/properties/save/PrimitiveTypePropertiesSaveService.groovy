@@ -15,17 +15,13 @@ class PrimitiveTypePropertiesSaveService {
 
     PrimitiveTypeGormService primitiveTypeGormService
 
-    boolean validateSaveOperations() {
-        false
-    }
-
-    PrimitiveTypePersistenceOperation save(ModelCatalogueProperties properties, DataModel dataModel, MeasurementUnit measurementUnit) {
+    PrimitiveTypePersistenceOperation save(ModelCatalogueProperties properties, DataModel dataModel, MeasurementUnit measurementUnit, Closure cls) {
         PrimitiveTypePersistenceOperation primitiveTypeOperation = null
         if ( properties.dataType != null ) {
             primitiveTypeOperation = find(properties.dataType, dataModel, measurementUnit)
         }
-        if ( primitiveTypeOperation != null ) {
-            process(primitiveTypeOperation)
+        if ( primitiveTypeOperation != null && cls != null) {
+            cls(primitiveTypeOperation)
         }
         primitiveTypeOperation
     }
@@ -62,10 +58,5 @@ class PrimitiveTypePropertiesSaveService {
             return primitiveTypeGormService.findByNameAndDataModelAndMeasurementUnit(dataTypeProperties.name, dataModel, measurementUnit)
         }
         null
-    }
-
-    void process(PrimitiveTypePersistenceOperation primitiveTypeOperation) {
-        PrimitiveType primitiveType = primitiveTypeOperation.dataType as PrimitiveType
-        primitiveType.save(validate: validateSaveOperations())
     }
 }

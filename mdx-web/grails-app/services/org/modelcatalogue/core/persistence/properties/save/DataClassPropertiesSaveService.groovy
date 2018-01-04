@@ -11,10 +11,6 @@ import org.modelcatalogue.core.persistence.properties.DataClassProperties
 @CompileStatic
 class DataClassPropertiesSaveService {
 
-    boolean validateSaveOperations() {
-        false
-    }
-
     DataClassGormService dataClassGormService
 
     DataClass findByProperties(DataClassProperties properties, DataModel dataModel) {
@@ -32,13 +28,13 @@ class DataClassPropertiesSaveService {
         dataClass.dataModel = dataModel
     }
 
-    DataClassPersistenceOperation save(DataClassProperties properties, DataModel dataModel) {
+    DataClassPersistenceOperation save(DataClassProperties properties, DataModel dataModel, Closure cls) {
         DataClassPersistenceOperation dataClassOperation = null
         if ( properties != null ) {
             dataClassOperation = find(properties, dataModel)
         }
-        if ( dataClassOperation != null ) {
-            process(dataClassOperation)
+        if ( dataClassOperation != null && cls != null) {
+            cls(dataClassOperation)
         }
         dataClassOperation
 
@@ -54,11 +50,5 @@ class DataClassPropertiesSaveService {
         populate(dataClass, dataModel, properties)
 
         new DataClassPersistenceOperation(operation: operation, dataClass: dataClass)
-    }
-
-
-    void process(DataClassPersistenceOperation dataClassOperation) {
-        DataClass dataClass = dataClassOperation.dataClass
-        dataClass.save(validate: validateSaveOperations())
     }
 }

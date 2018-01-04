@@ -13,10 +13,6 @@ class MeasurementUnitPropertiesSaveService {
 
     MeasurementUnitGormService measurementUnitGormService
 
-    boolean validateSaveOperations() {
-        false
-    }
-
     MeasurementUnitPersistenceOperation find(MeasurementUnitProperties properties,
                                              DataModel dataModel) {
         PersistenceOperation operation = PersistenceOperation.UPDATE
@@ -53,19 +49,14 @@ class MeasurementUnitPropertiesSaveService {
         null
     }
 
-    MeasurementUnitPersistenceOperation save(MeasurementUnitProperties properties, DataModel dataModel) {
+    MeasurementUnitPersistenceOperation save(MeasurementUnitProperties properties, DataModel dataModel, Closure cls) {
         MeasurementUnitPersistenceOperation measurementUnitOperation = null
         if ( properties != null && properties.validate()) {
             measurementUnitOperation = find(properties, dataModel)
         }
         if ( measurementUnitOperation != null ) {
-            process(measurementUnitOperation)
+            cls(measurementUnitOperation)
         }
         measurementUnitOperation
-    }
-
-    void process(MeasurementUnitPersistenceOperation measurementUnitOperation) {
-        MeasurementUnit measurementUnit = measurementUnitOperation.measurementUnit
-        measurementUnit.save(validate: validateSaveOperations())
     }
 }

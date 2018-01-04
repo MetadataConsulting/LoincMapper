@@ -12,6 +12,7 @@ import org.modelcatalogue.core.persistence.DataModelGormService
 import org.modelcatalogue.core.persistence.properties.ModelCatalogueProperties
 import org.modelcatalogue.core.persistence.properties.adapters.LoincAdapter
 import org.modelcatalogue.core.persistence.properties.save.ModelCataloguePropertiesSaveService
+import org.modelcatalogue.core.persistence.properties.save.ModelCataloguePropertiesSaveStatelessService
 
 @CompileStatic
 @Slf4j
@@ -19,7 +20,7 @@ class ModelCatalogueLoincImportService implements Benchmark {
 
     LoincImportProcessorService loincImportProcessorService
 
-    ModelCataloguePropertiesSaveService modelCataloguePropertiesSaveService
+    ModelCataloguePropertiesSaveStatelessService modelCataloguePropertiesSaveStatelessService
 
     DataModelGormService dataModelGormService
 
@@ -38,8 +39,8 @@ class ModelCatalogueLoincImportService implements Benchmark {
                 List<ModelCatalogueProperties> modelCataloguePropertiesList = loincList.collect { Loinc loinc ->
                     new LoincAdapter(loinc)
                 } as List<ModelCatalogueProperties>
-                modelCataloguePropertiesSaveService.save(dataModel, modelCataloguePropertiesList)
-                cleanUpGorm()
+                modelCataloguePropertiesSaveStatelessService.save(dataModel, modelCataloguePropertiesList)
+                //cleanUpGorm()
             }
         }
         log.info "ModelCatalogueLoincImportService.save with a batchSize of: ${batchSize} took ${duration} ms"

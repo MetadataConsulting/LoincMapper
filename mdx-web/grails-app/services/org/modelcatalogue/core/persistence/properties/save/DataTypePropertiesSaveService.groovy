@@ -12,10 +12,6 @@ import org.modelcatalogue.core.persistence.properties.ModelCatalogueProperties
 @CompileStatic
 class DataTypePropertiesSaveService {
 
-    boolean validateSaveOperations() {
-        false
-    }
-
     DataTypeGormService dataTypeGormService
 
     DataType findByProperties(DataTypeProperties dataTypeProperties, DataModel dataModel) {
@@ -39,13 +35,13 @@ class DataTypePropertiesSaveService {
         dataType.dataModel = dataModel
     }
 
-    DataTypePersistenceOperation save(ModelCatalogueProperties properties, DataModel dataModel) {
+    DataTypePersistenceOperation save(ModelCatalogueProperties properties, DataModel dataModel, Closure cls) {
         DataTypePersistenceOperation dataTypeOperation = null
         if ( properties.dataType != null ) {
             dataTypeOperation = find(properties.dataType, dataModel)
         }
-        if ( dataTypeOperation != null ) {
-            process(dataTypeOperation)
+        if ( dataTypeOperation != null && cls != null ) {
+            cls(dataTypeOperation)
         }
         dataTypeOperation
 
@@ -61,11 +57,5 @@ class DataTypePropertiesSaveService {
         populate(dataType, dataModel, properties)
 
         new DataTypePersistenceOperation(operation: operation, dataType: dataType)
-    }
-
-
-    void process(DataTypePersistenceOperation dataTypeOperation) {
-        DataType dataType = dataTypeOperation.dataType
-        dataType.save(validate: validateSaveOperations())
     }
 }

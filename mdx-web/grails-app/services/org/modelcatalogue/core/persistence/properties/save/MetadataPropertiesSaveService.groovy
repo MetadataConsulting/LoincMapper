@@ -13,25 +13,21 @@ class MetadataPropertiesSaveService {
 
     ExtensionValueGormService extensionValueGormService
 
-    boolean validateSaveOperations() {
-        false
-    }
-
-    void save(List<MetadataProperties> metadataList, DataElement dataElement) {
+    void save(List<MetadataProperties> metadataList, DataElement dataElement, Closure cls) {
         if ( metadataList ) {
             for ( MetadataProperties metadataProperties : metadataList ) {
-                save(metadataProperties, dataElement)
+                save(metadataProperties, dataElement, cls)
             }
         }
     }
 
-    ExtensionValuePersistenceOperation save(MetadataProperties properties, DataElement dataElement) {
+    ExtensionValuePersistenceOperation save(MetadataProperties properties, DataElement dataElement, Closure cls) {
         ExtensionValuePersistenceOperation extensionValueOperation = null
         if ( properties != null ) {
             extensionValueOperation = find(properties, dataElement)
         }
-        if ( extensionValueOperation != null ) {
-            process(extensionValueOperation)
+        if ( extensionValueOperation != null && cls != null ) {
+            cls(extensionValueOperation)
         }
         extensionValueOperation
     }
@@ -60,11 +56,5 @@ class MetadataPropertiesSaveService {
         }
         extensionValue.extensionValue = (properties.value as String)
         extensionValue.element = dataElement
-    }
-
-
-    void process(ExtensionValuePersistenceOperation extensionValueOperation) {
-        ExtensionValue extensionValue = extensionValueOperation.extensionValue
-        extensionValue.save(validate: validateSaveOperations())
     }
 }

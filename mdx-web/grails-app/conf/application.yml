@@ -105,7 +105,7 @@ environments:
             driverClassName: com.mysql.jdbc.Driver
             dialect: org.hibernate.dialect.MySQL5InnoDBDialect
             dbCreate: create-drop
-            url: jdbc:mysql://127.0.0.1:8889/loincImport
+            url: jdbc:mysql://127.0.0.1:8889/loinc
             username: root
             password: root
     test:
