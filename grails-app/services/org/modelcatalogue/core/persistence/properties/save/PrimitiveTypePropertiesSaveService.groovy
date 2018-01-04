@@ -1,14 +1,14 @@
-package org.modelcatalogue.core.persistence.saveproperties
+package org.modelcatalogue.core.persistence.properties.save
 
 import groovy.transform.CompileStatic
 import org.grails.PersistenceOperation
 import org.modelcatalogue.core.DataModel
-import org.modelcatalogue.core.DataTypeProperties
 import org.modelcatalogue.core.MeasurementUnit
-import org.modelcatalogue.core.ModelCatalogueProperties
 import org.modelcatalogue.core.PrimitiveType
 import org.modelcatalogue.core.persistence.PrimitiveTypeGormService
-import org.modelcatalogue.core.persistence.PrimitiveTypePersistenceOperation
+import org.modelcatalogue.core.persistence.operations.PrimitiveTypePersistenceOperation
+import org.modelcatalogue.core.persistence.properties.DataTypeProperties
+import org.modelcatalogue.core.persistence.properties.ModelCatalogueProperties
 
 @CompileStatic
 class PrimitiveTypePropertiesSaveService {

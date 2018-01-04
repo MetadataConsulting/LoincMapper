@@ -35,3 +35,4 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
 }
 root(ERROR, ['STDOUT'])
 logger('org.loinc', DEBUG, ['STDOUT'], false)
+logger('org.modelcatalogue.core', DEBUG, ['STDOUT'], false)

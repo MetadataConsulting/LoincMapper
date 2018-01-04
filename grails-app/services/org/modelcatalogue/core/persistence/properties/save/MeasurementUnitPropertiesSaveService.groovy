@@ -1,12 +1,12 @@
-package org.modelcatalogue.core.persistence.saveproperties
+package org.modelcatalogue.core.persistence.properties.save
 
 import groovy.transform.CompileStatic
 import org.grails.PersistenceOperation
 import org.modelcatalogue.core.DataModel
 import org.modelcatalogue.core.MeasurementUnit
-import org.modelcatalogue.core.MeasurementUnitProperties
 import org.modelcatalogue.core.persistence.MeasurementUnitGormService
-import org.modelcatalogue.core.persistence.MeasurementUnitPersistenceOperation
+import org.modelcatalogue.core.persistence.operations.MeasurementUnitPersistenceOperation
+import org.modelcatalogue.core.persistence.properties.MeasurementUnitProperties
 
 @CompileStatic
 class MeasurementUnitPropertiesSaveService {

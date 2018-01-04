@@ -1,4 +1,4 @@
-package org.modelcatalogue.core;
+package org.modelcatalogue.core.persistence.properties;
 
 import java.util.List;
 

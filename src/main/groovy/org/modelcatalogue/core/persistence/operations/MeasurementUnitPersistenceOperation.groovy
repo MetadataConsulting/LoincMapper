@@ -1,4 +1,4 @@
-package org.modelcatalogue.core.persistence
+package org.modelcatalogue.core.persistence.operations
 
 import groovy.transform.CompileStatic
 import org.grails.PersistenceOperation

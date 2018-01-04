@@ -1,12 +1,12 @@
-package org.modelcatalogue.core.persistence.saveproperties
+package org.modelcatalogue.core.persistence.properties.save
 
 import groovy.transform.CompileStatic
 import org.grails.PersistenceOperation
 import org.modelcatalogue.core.DataClass
-import org.modelcatalogue.core.DataClassProperties
 import org.modelcatalogue.core.DataModel
 import org.modelcatalogue.core.persistence.DataClassGormService
-import org.modelcatalogue.core.persistence.DataClassPersistenceOperation
+import org.modelcatalogue.core.persistence.operations.DataClassPersistenceOperation
+import org.modelcatalogue.core.persistence.properties.DataClassProperties
 
 @CompileStatic
 class DataClassPropertiesSaveService {

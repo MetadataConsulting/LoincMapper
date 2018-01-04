@@ -1,12 +1,11 @@
-package org.modelcatalogue.core.persistence.saveproperties
+package org.modelcatalogue.core.persistence.properties.save
 
 import groovy.transform.CompileStatic
 import org.modelcatalogue.core.DataModel
-import org.modelcatalogue.core.ModelCatalogueProperties
-import org.modelcatalogue.core.persistence.DataClassPersistenceOperation
-import org.modelcatalogue.core.persistence.DataElementPersistenceOperation
-import org.modelcatalogue.core.persistence.DataTypePersistenceOperation
-import org.modelcatalogue.core.persistence.MeasurementUnitPersistenceOperation
+import org.modelcatalogue.core.persistence.operations.DataElementPersistenceOperation
+import org.modelcatalogue.core.persistence.operations.DataTypePersistenceOperation
+import org.modelcatalogue.core.persistence.operations.MeasurementUnitPersistenceOperation
+import org.modelcatalogue.core.persistence.properties.ModelCatalogueProperties
 
 @CompileStatic
 class ModelCataloguePropertiesSaveService {

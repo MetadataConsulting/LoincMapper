@@ -1,6 +1,7 @@
 package org.modelcatalogue.core
 
 import groovy.transform.CompileStatic
+import org.modelcatalogue.core.persistence.dataimport.ModelCatalogueLoincImportService
 
 @CompileStatic
 class DataModelLoincImportController {

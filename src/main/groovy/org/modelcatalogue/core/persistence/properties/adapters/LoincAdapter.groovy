@@ -1,7 +1,17 @@
-package org.modelcatalogue.core
+package org.modelcatalogue.core.persistence.properties.adapters
 
 import groovy.transform.CompileStatic
 import org.loinc.Loinc
+import org.modelcatalogue.core.persistence.properties.DataClassProperties
+import org.modelcatalogue.core.persistence.properties.DataClassPropertiesImpl
+import org.modelcatalogue.core.persistence.properties.DataElementProperties
+import org.modelcatalogue.core.persistence.properties.DataElementPropertiesImpl
+import org.modelcatalogue.core.persistence.properties.DataTypeProperties
+import org.modelcatalogue.core.persistence.properties.MeasurementUnitProperties
+import org.modelcatalogue.core.persistence.properties.MeasurementUnitPropertiesImpl
+import org.modelcatalogue.core.persistence.properties.MetadataProperties
+import org.modelcatalogue.core.persistence.properties.MetadataPropertiesImpl
+import org.modelcatalogue.core.persistence.properties.ModelCatalogueProperties
 
 @CompileStatic
 class LoincAdapter implements ModelCatalogueProperties {

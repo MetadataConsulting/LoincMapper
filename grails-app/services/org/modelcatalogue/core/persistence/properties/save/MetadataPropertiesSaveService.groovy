@@ -1,12 +1,12 @@
-package org.modelcatalogue.core.persistence.saveproperties
+package org.modelcatalogue.core.persistence.properties.save
 
 import groovy.transform.CompileStatic
 import org.grails.PersistenceOperation
 import org.modelcatalogue.core.DataElement
 import org.modelcatalogue.core.ExtensionValue
-import org.modelcatalogue.core.MetadataProperties
 import org.modelcatalogue.core.persistence.ExtensionValueGormService
-import org.modelcatalogue.core.persistence.ExtensionValuePersistenceOperation
+import org.modelcatalogue.core.persistence.operations.ExtensionValuePersistenceOperation
+import org.modelcatalogue.core.persistence.properties.MetadataProperties
 
 @CompileStatic
 class MetadataPropertiesSaveService {
