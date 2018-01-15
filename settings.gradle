@@ -1,7 +1,10 @@
+include 'stringtransformer'
 include 'mdx-web'
 include 'loinc-web'
 include 'loinc-import'
 include 'loinc-gorm'
 include 'loinc-entities'
+include 'snomed-entities'
+include 'snomed-import'
 
 rootProject.name = 'loinc'

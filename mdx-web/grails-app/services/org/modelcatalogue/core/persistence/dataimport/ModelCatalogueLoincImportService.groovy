@@ -20,7 +20,7 @@ class ModelCatalogueLoincImportService implements Benchmark {
 
     LoincImportProcessorService loincImportProcessorService
 
-    ModelCataloguePropertiesSaveStatelessService modelCataloguePropertiesSaveStatelessService
+    ModelCataloguePropertiesSaveService modelCataloguePropertiesSaveService
 
     DataModelGormService dataModelGormService
 
@@ -39,8 +39,8 @@ class ModelCatalogueLoincImportService implements Benchmark {
                 List<ModelCatalogueProperties> modelCataloguePropertiesList = loincList.collect { Loinc loinc ->
                     new LoincAdapter(loinc)
                 } as List<ModelCatalogueProperties>
-                modelCataloguePropertiesSaveStatelessService.save(dataModel, modelCataloguePropertiesList)
-                //cleanUpGorm()
+                modelCataloguePropertiesSaveService.save(dataModel, modelCataloguePropertiesList)
+                cleanUpGorm()
             }
         }
         log.info "ModelCatalogueLoincImportService.save with a batchSize of: ${batchSize} took ${duration} ms"

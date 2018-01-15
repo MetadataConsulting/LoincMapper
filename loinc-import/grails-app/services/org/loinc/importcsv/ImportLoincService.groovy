@@ -8,14 +8,14 @@ import groovy.util.logging.Slf4j
 import org.loinc.LoincImpl
 import org.loinc.entities.Loinc
 import org.loinc.entities.LoincImportProcessorService
-import org.loinc.importcsv.stringtransformer.AllCapsToLowerCamelCaseTransformer
-import org.loinc.importcsv.stringtransformer.CamelCaseToLowerCameCaseTransformer
-import org.loinc.importcsv.stringtransformer.DuplicatedDoubleQuotesToOneDoubleQuoteTransformer
-import org.loinc.importcsv.stringtransformer.LeadingTrailingDoubleQuotesRemovalTransformer
-import org.loinc.importcsv.stringtransformer.NotLettersOrDigitsRemovalTransformer
-import org.loinc.importcsv.stringtransformer.ReservedWordsTransformer
-import org.loinc.importcsv.stringtransformer.SnakeCaseToLowerCamelCaseTransformer
-import org.loinc.importcsv.stringtransformer.StringTransformer
+import org.modelcatalogue.stringtransformer.AllCapsToLowerCamelCaseTransformer
+import org.modelcatalogue.stringtransformer.CamelCaseToLowerCameCaseTransformer
+import org.modelcatalogue.stringtransformer.DuplicatedDoubleQuotesToOneDoubleQuoteTransformer
+import org.modelcatalogue.stringtransformer.LeadingTrailingDoubleQuotesRemovalTransformer
+import org.modelcatalogue.stringtransformer.NotLettersOrDigitsRemovalTransformer
+import org.modelcatalogue.stringtransformer.ReservedWordsTransformer
+import org.modelcatalogue.stringtransformer.SnakeCaseToLowerCamelCaseTransformer
+import org.modelcatalogue.stringtransformer.StringTransformer
 
 @Slf4j
 @CompileStatic
@@ -42,6 +42,7 @@ class ImportLoincService implements GrailsConfigurationAware, LoincImportProcess
         this.nullIfValueBlank = co.getProperty('loinic.csv.nullIfValueBlank', Boolean, true)
     }
 
+    @Override
     int processInputStream(InputStream inputStream, Integer batchSize, Closure cls) {
         int processed = 0
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))

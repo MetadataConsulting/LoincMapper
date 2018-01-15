@@ -5,12 +5,12 @@ buildscript {
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
-        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:$assetPipelineVersion"
+        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.14.2"
     }
 }
 
 version "0.1"
-group "myplugin"
+group "org"
 
 apply plugin:"eclipse"
 apply plugin:"idea"
@@ -46,12 +46,12 @@ dependencies {
     profile "org.grails.profiles:web-plugin"
     provided "org.grails:grails-plugin-services"
     provided "org.grails:grails-plugin-domain-class"
-    runtime "com.bertramlabs.plugins:asset-pipeline-grails:$assetPipelineVersion"
+    runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.14.2"
     testCompile "org.grails:grails-gorm-testing-support"
     testCompile "org.grails:grails-plugin-testing"
     testCompile "org.grails:grails-web-testing-support"
 
-    compile project(':loinc-entities')
+    compile project(':snomed-entities')
     compile project(':stringtransformer')
 }
 
@@ -77,14 +77,4 @@ grailsPublish {
 
 assets {
     packagePlugin = true
-}
-
-
-assets {
-    minifyJs = true
-    minifyCss = true
-}
-
-tasks.withType(Test) {
-    systemProperty "RUN_SLOW", System.getProperty('RUN_SLOW')
 }
